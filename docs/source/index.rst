@@ -56,7 +56,7 @@ Here, you specify where Spicewrapper should look to find things like the netlist
 
 **Optional: Parameter Name Extraction**
 You can run this line if you want to save a neatly formatted list of parameters to the clipboard.
-``spice_utils.extract_and_format_parameters(cir_file_path)``.
+```spice_utils.extract_and_format_parameters(cir_file_path)```.
   This comes in handy for specifying a parameter sweep and saves you the time of manually hunting through the netlist to find the parameters.  The output will look something like this
 ``
 params = {
