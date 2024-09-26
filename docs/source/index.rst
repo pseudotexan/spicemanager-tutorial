@@ -34,9 +34,24 @@ Running a simple example
 --------
 In this example, we'll run one of the included scripts, ``example_scripts/pulse_filter_grid_optimization_script.py``, to showcase some of the useful features of Spicewrapper.  
 
-This example uses a netlist file, ``example_circuits/pulse_filter.cir``, which implements a simple RLC lowpass filter.  The values of each element are parameterized in the netlist, i.e. ``.param rval = 50``.  Spicewrapper looks for parameter values in the ``.cir`` file (note: it does not look in subcircuits for parameters) and updates their values as needed for sweeps or optimization runs.  
+This example uses a netlist file, ``example_circuits/pulse_filter.cir``, which implements a simple RLC lowpass filter.  The values of each element are parameterized in the netlist, i.e. ``.param rval = 50``.  Spicewrapper looks for parameter values in the ``.cir`` file (note: it does not look in subcircuits for parameters) and updates their values as needed for sweeps or optimization runs.  Note that it never directly modifies your circuit file; changes are always made to a temporary copy created in the temporary folder of the spicewrapper directory.
 
+We'll break down the important parts of a Spicewrapper script next.
 
+#File Paths
+``
+#define the circuit file and subcircuit path
+circuit_filename = 'pulse_filter.cir'
+
+#here, the script directory is the directory of this file
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+#define the circuit file path, assumed to be in the same directory as this file in this case
+cir_file_path = os.path.join(script_dir, '..', 'example_circuits', circuit_filename)
+
+#define the subcircuit path - this is where all subcircuits are stored
+subcircuit_path = os.path.join(script_dir, '..', 'included_subcircuits')
+``
 
 
 
