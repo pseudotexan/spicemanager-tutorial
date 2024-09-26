@@ -38,7 +38,31 @@ This example uses a netlist file, ``example_circuits/pulse_filter.cir``, which i
 
 We'll break down the important parts of a Spicewrapper script next.
 
-# File Paths
+**File Paths**
+``
+#define the circuit file and subcircuit path
+circuit_filename = 'pulse_filter.cir'
+
+#here, the script directory is the directory of this file
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+#define the circuit file path, assumed to be in the same directory as this file in this case
+cir_file_path = os.path.join(script_dir, '..', 'example_circuits', circuit_filename)
+
+#define the subcircuit path - this is where all subcircuits are stored
+subcircuit_path = os.path.join(script_dir, '..', 'included_subcircuits')
+``
+Here, you specify where Spicewrapper should look to find things like the netlist, the subcircuit directory, etc.
+
+**Optional: Parameter Name Extraction**
+``spice_utils.extract_and_format_parameters(cir_file_path)``
+You can run this line if you want to save a neatly formatted list of parameters to the clipboard.  This comes in handy for specifying a parameter sweep and saves you the time of manually hunting through the netlist to find the parameters.  The output will look something like this:
+``params = {
+    'rval': [50.0, 500.0, 8, 'log'],
+    'lval': [1e-07, 1e-06, 8, 'log'],
+    'cval': [1e-10, 1e-09, 8, 'log']
+}``
+
 
 
 
