@@ -2,7 +2,6 @@ Welcome to Spicewrapper's documentation!
 ===================================
 
 **Spicewrapper** is a python library containing a variety of convenience functions for NGSpice.  These include:
--
 - Optimization: specify which netlist parameters you want to vary to achieve a given outcome from the simulation.
    - Randomized grid search: Iterate over the shuffled set of parameter combinations, and find the best one.
    - Basinhopping: Use python's basinhopping optimizer to combine a stochastic search with gradient optimization.
