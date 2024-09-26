@@ -6,8 +6,13 @@ Welcome to Spicewrapper's documentation!
 - Optimization: specify which netlist parameters you want to vary to achieve a given outcome from the simulation.
    - Randomized grid search: Iterate over the shuffled set of parameter combinations, and find the best one.
    - Basinhopping: Use python's basinhopping optimizer to combine a stochastic search with gradient optimization.
-   - Outcomes: specify an objective function for the simulation based on any measurable quantity from it. For example: the current through inductor L1, the total energy dissipated by DC sources, the voltage at node 3, etc.
-   - 
+   - Outcomes: specify an objective function for the simulation based on any measurable quantity from it. For example, you can specify the functional form of current through an inductor over time, or instruct it to minimize DC source energy consumption.
+   - Objective functions: can specify python functions, or a series of time-value pairs and interpolate around them.
+   - Waveform construction: includes a simple GUI tool to draw waveforms quickly.
+- Sweeps: run large parameter sweeps for your circuit.  
+- Simplified results: simulation outcomes are conveniently returned as Dataframes, organized logically and simply.  No more parsing raw files!
+- 
+
 
 
 
