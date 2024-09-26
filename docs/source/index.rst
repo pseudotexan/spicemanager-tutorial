@@ -1,7 +1,7 @@
 Welcome to Spicewrapper's documentation!
 ===================================
 
-**Spicewrapper** is a python library containing a variety of convenience functions for NGSpice.  These include:
+**Spicewrapper** is a python library containing a variety of convenience functions for NGSpice.  These include
 
 
 - Optimization: specify which netlist parameters you want to vary to achieve a given outcome from the simulation.
