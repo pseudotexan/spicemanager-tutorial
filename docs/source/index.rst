@@ -55,10 +55,9 @@ subcircuit_path = os.path.join(script_dir, '..', 'included_subcircuits')
 Here, you specify where Spicewrapper should look to find things like the netlist, the subcircuit directory, etc.
 
 **Optional: Parameter Name Extraction**
-
+You can run this line if you want to save a neatly formatted list of parameters to the clipboard.
 ``spice_utils.extract_and_format_parameters(cir_file_path)``.
-You can run this line if you want to save a neatly formatted list of parameters to the clipboard.  This comes in handy for specifying a parameter sweep and saves you the time of manually hunting through the netlist to find the parameters.  The output will look something like this
-<pre>
+  This comes in handy for specifying a parameter sweep and saves you the time of manually hunting through the netlist to find the parameters.  The output will look something like this
 ```python
 params = {
     'rval': [50.0, 500.0, 8, 'log'],
@@ -66,9 +65,3 @@ params = {
     'cval': [1e-10, 1e-09, 8, 'log']
 }
 ```
-</pre>
-
-
-
-
-5. Run the script.  You should see a GUI pop up indicating simulation progress.  
