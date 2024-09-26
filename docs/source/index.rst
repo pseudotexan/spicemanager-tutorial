@@ -17,26 +17,9 @@ Welcome to Spicewrapper's documentation!
 
 
 
-
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
-
-.. note::
-
-   This project is under active development.
-
-Contents
+Getting started
 --------
-
-.. toctree::
-
-   usage
-   api
-
-Contents2
---------
+1. Clone the git repo to your computer from http://www.github.com/pseudotexan/spicewrapper
+2. In the spicewrapper folder, go to '''example_scripts/pulse_filter_grid_optimization_script.py'''
+3. Near the top, modify the '''path_to_spicewrapper''' path to reflect the actual git directory on your computer.  This will make it easier to copy this example file and use it in other project directories unrelated to spicewrapper.
+4. Run the script 
