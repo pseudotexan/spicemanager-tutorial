@@ -15,7 +15,7 @@ Welcome to Spicewrapper's documentation!
 - Built-in multiprocessing: Run as many NGSpice instances in parallel as you want!  Or, at least, with as many physical cores as you have. Boosts simulation throughput considerably, especially for large sweeps and optimization runs.
 - Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the 
 
-:usage:
+:usage:`Usage`
 
 Prologue: Python and NGSpice
 --------
