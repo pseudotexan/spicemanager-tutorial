@@ -16,7 +16,7 @@ Welcome to Spicewrapper's documentation!
 - Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the connection.
 
 
-:doc:`Label text <usage>`
+:doc:`Label text <docs/source/usage>`
 
 Prologue: Python and NGSpice
 --------
