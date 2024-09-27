@@ -21,6 +21,9 @@ Prologue: Python and NGSpice
 **Windows**
 
 1. Install the official python distributable https://www.python.org/downloads/windows/ 
+
+   1. Note that you need Python 3.10 or higher for this to work properly. Multiprocessing capabilities are frequently updated, and no guarantee of behavior is possible with an outdated version of Python.
+
 2. Install NGSpice, latest version: https://ngspice.sourceforge.io/download.html 
 3. Move the NGSpice folder wherever you want it, then copy the path to the folder where the .exe is stored (you can click on the windows explorer bar and ctrl+c to grab it once you've navigated to it)
 4. Add the NGSpice path to your Windows PATH environment variables:
@@ -30,8 +33,9 @@ Prologue: Python and NGSpice
    3. Click "new" on the popup window, and paste the path that you copied to the ngspice executable earlier.  **Note: the path shouldn't include the .exe name itself!**
    4. Hit OK to close all the windows for this stuff.
 
-5. Open command prompt and try typing ``ngspice`` and pressing enter.
+5. Open command prompt (from any directory) and try typing ``ngspice`` and pressing enter.  You should see a 90's looking GUI pop up in a small window.  If you don't, something is wrong with your PATH variable for Windows.
 6. If you haven't already, install a good IDE.  I recommend Cursor: https://www.cursor.com 
+
 
 Getting started
 --------
