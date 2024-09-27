@@ -19,6 +19,7 @@ Prologue: Python and NGSpice
 --------
 
 **Windows**
+
 1. Install the official python distributable https://www.python.org/downloads/windows/ 
 2. Install NGSpice, latest version: https://ngspice.sourceforge.io/download.html 
 3. Move the NGSpice folder wherever you want it, then copy the path to the folder where the .exe is stored (you can click on the windows explorer bar and ctrl+c to grab it once you've navigated to it)
