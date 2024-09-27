@@ -151,11 +151,23 @@ It will bring up a GUI displaying the ongoing progress, including the best score
 
 Spicewrapper has two significant data structures that you will receive.
 
-1. The result_dataframe
+1. The result dataframe (result_df)
 
 This dataframe stores the results of individual NGSpice runs.  Each row represents the outcome of one run, and the columns contain all the important data.  The columns look like:
 
-| Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
-| Row 1    | Data 1   | Data 2   |
-| Row 2    | Data 3   | Data 4   |
+[index, circ_file_orig_contents, total_energy, spice_df, param1val, param2val, param3val, etc]
+``index`` is the row index of the particular result. Nothing special.
+``circ_file_orig_contents`` is the raw text of the circuit file used in that run.
+``total_energy`` is the net energy consumed by all the DC voltage sources over the simulation window.  This calculation might fail for various reasons, most commonly when you don't have any DC voltage sources for it to calculate from.  In the future, this may be extended to other types of sources.
+``spice_df`` is a dataframe itself which contains the values of all simulation variables over time.  We'll explain this later.
+``paramXval`` is the value of the associated simulation parameter for this particular combination of parameter values.  If your parameter name in the netlist .cir file is actually ``rval``, then this column would be named ``rval``.  The remaining columns to the right are similar, just for the other parameter values from the simulation.
+
+2. the spice_dataframe (spice_df)
+
+The columns are [time, variable_name1, variable_name2, etc].  The rows are the timesteps produced by the simulation.  So you get the value of every variable at every timestep.  Note that Spicewrapper inherently interpolates timesteps along a fixed grid (that you specify in the call to ``run_spicemanager`` with the argument ``interpolation_timestep``).  
+
+**Plotting and saving**
+
+From here on out, you've got your data in dataframes, and you can obviously do whatever you want with it.  But we've thrown in a few convenience functions to speed some things up for beginners.  
+
+
