@@ -147,3 +147,15 @@ Next, we call ``run_spicemanager`` to begin the optimization process.
 
 It will bring up a GUI displaying the ongoing progress, including the best score (lowest/best optimizer value) and the objective waveforms for that particular parameter combination.  When finished, it will return two values representing a single dataframe with the best result, and a larger dataframe where each row is a simulation result representing a different parameter combination.
 
+**Output data**
+
+Spicewrapper has two significant data structures that you will receive.
+
+1. The result_dataframe
+
+This dataframe stores the results of individual NGSpice runs.  Each row represents the outcome of one run, and the columns contain all the important data.  The columns look like:
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Data 1   | Data 2   |
+| Row 2    | Data 3   | Data 4   |
