@@ -181,6 +181,11 @@ Next, we call ``run_spicemanager`` to begin the optimization process.
 
 It will bring up a GUI displaying the ongoing progress, including the best score (lowest/best optimizer value) and the objective waveforms for that particular parameter combination.  When finished, it will return two values representing a single dataframe with the best result, and a larger dataframe where each row is a simulation result representing a different parameter combination.
 
+.. image:: GUI.png
+   :alt: Simulation result
+   :align: center
+   :width: 50%
+
 **Output data**
 
 Spicewrapper has two significant data structures that you will receive.
