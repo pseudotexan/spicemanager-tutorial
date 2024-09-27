@@ -40,6 +40,7 @@ We'll break down the important parts of a Spicewrapper script next.
 
 **Paths and files**
 .. code-block:: python
+
    #define the circuit file and subcircuit path
    circuit_filename = 'pulse_filter.cir'
    
