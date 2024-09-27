@@ -13,7 +13,8 @@ Welcome to Spicewrapper's documentation!
 - Sweeps: run large parameter sweeps for your circuit.  
 - Simplified results: simulation outcomes are conveniently returned as Dataframes, organized logically and simply.  No more parsing raw files!
 - Built-in multiprocessing: Run as many NGSpice instances in parallel as you want!  Or, at least, with as many physical cores as you have. Boosts simulation throughput considerably, especially for large sweeps and optimization runs.
-- Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the 
+- Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the connection.
+
 
 For more information, see the :doc: `installation guide <usage>`.
 
