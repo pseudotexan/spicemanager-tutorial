@@ -209,7 +209,7 @@ The columns are [time, variable_name1, variable_name2, etc].  The rows are the t
 
 From here on out, you've got your data in dataframes, and you can obviously do whatever you want with it.  But we've thrown in a few convenience functions to speed some things up for beginners.  data_processing.simple_plot() and data_processing.plot_sweep_result() are discussed in ``squid_param_sweep.py`` and other examples.  
 
-.. image:: result.png
+.. image:: grid_result.png
    :alt: Simulation result
    :align: center
    :width: 50%
