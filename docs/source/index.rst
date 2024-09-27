@@ -209,6 +209,7 @@ This dataframe stores the results of individual NGSpice runs.  Each row represen
 Some handy examples of accessing data from the results are provided at the end of ``squid_single_simulation.py`` in ``/example_scripts``.  There are many ways to access and use the data, but these are mentioned for convenience.
 
 .. code-block:: python
+
    #access some data from the result dataframe
    #first get the spice_dataframe ('spice_df') which contains the simulation variable data
    spice_df = result['spice_df'].iloc[0]
