@@ -24,10 +24,12 @@ Prologue: Python and NGSpice
 2. Install NGSpice, latest version: https://ngspice.sourceforge.io/download.html 
 3. Move the NGSpice folder wherever you want it, then copy the path to the folder where the .exe is stored (you can click on the windows explorer bar and ctrl+c to grab it once you've navigated to it)
 4. Add the NGSpice path to your Windows PATH environment variables:
+
    1. Press windows and type "Environment variables" and go to the "edit environment variables for your account" suggestion
    2. Click on the "Path" user variable and click the "Edit" button
    3. Click "new" on the popup window, and paste the path that you copied to the ngspice executable earlier.  **Note: the path shouldn't include the .exe name itself!**
    4. Hit OK to close all the windows for this stuff.
+
 5. 
 
 Getting started
