@@ -206,6 +206,24 @@ This dataframe stores the results of individual NGSpice runs.  Each row represen
 
 ``paramXval`` is the value of the associated simulation parameter for this particular combination of parameter values.  If your parameter name in the netlist .cir file is actually ``rval``, then this column would be named ``rval``.  The remaining columns to the right are similar, just for the other parameter values from the simulation.
 
+Some handy examples of accessing data from the results are provided at the end of ``squid_single_simulation.py`` in ``/example_scripts``.  There are many ways to access and use the data, but these are mentioned for convenience.
+
+.. code-block:: python
+   #access some data from the result dataframe
+   #first get the spice_dataframe ('spice_df') which contains the simulation variable data
+   spice_df = result['spice_df'].iloc[0]
+   #get the 'i(l1)' variable data as a dataframe column
+   i_l1 = spice_df['i(l1)']
+   
+   #get the value at time = 1e-9 seconds using the helper function in spice_utils
+   i_l1_at_1ns = spice_utils.get_value_at_time(spice_df, 'i(l1)', 1e-9)
+   print('value at 1ns: ', i_l1_at_1ns)
+   
+   #get the values of 'i(l1)' in the time range from 1e-9 seconds to 2e-9 seconds
+   i_l1_in_range = spice_utils.get_values_in_time_range(spice_df, 'i(l1)', [1e-9, 2e-9])
+   print('values in range: ', i_l1_in_range)
+   
+
 2. the spice_dataframe (spice_df)
 
 The columns are [time, variable_name1, variable_name2, etc].  The rows are the timesteps produced by the simulation.  So you get the value of every variable at every timestep.  Note that Spicewrapper inherently interpolates timesteps along a fixed grid (that you specify in the call to ``run_spicemanager`` with the argument ``interpolation_timestep``).  
