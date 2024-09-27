@@ -21,6 +21,11 @@ Welcome to Spicewrapper's documentation!
 - Built-in multiprocessing: Run as many NGSpice instances in parallel as you want!  Or, at least, with as many physical cores as you have. Boosts simulation throughput considerably, especially for large sweeps and optimization runs.
 - Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the connection.
 
+Spicewrapper is not meant to be a complete python wrapper for NGSpice, like Pyspice.  It basically reads the netlist, makes a temporary copy with some small changes for sweeping parameters and saving data more conveniently, then runs NGSpice in some number of parallel instances.  It saves and organizes the output data into convenient dataframes.  As such, you should be familiar with netlists, or at least be able to generate them via LTSpice, KiCad, or similar software.  
+
+This code is in a very early state and has some limitations as a result.  It's only written for transient simulations right now, so you can't analyze the result of steady-state simulations or frequency-domain simulations.  It's possible to add this in the future, though.
+
+You may get used to working purely with netlists while using this code.  A suggestion I have is to learn to use subcircuits extensively.  Most of the time, issues with SPICE netlists are due to excessively long and complicated nets for every individual simulation you want to run.  Whenever possible, you should test small, modular subcircuits and confirm that they behave correctly and have the right connectivity, then save them into a library and reuse them in more complex circuits.  Most designs, even fairly complex ones involving many components, can be reduced to just a few lines of code in your netlist by reusing these blocks appropriately.
 
 For more information, see the :doc:`installation guide <usage>`.
 
