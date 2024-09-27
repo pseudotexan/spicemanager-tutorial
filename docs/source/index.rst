@@ -15,7 +15,19 @@ Welcome to Spicewrapper's documentation!
 - Built-in multiprocessing: Run as many NGSpice instances in parallel as you want!  Or, at least, with as many physical cores as you have. Boosts simulation throughput considerably, especially for large sweeps and optimization runs.
 - Flexible directory management: You can tell spicewrapper where your circuit file is, subcircuit files are, etc., and it will manage the 
 
+Prologue: Python and NGSpice
+--------
 
+**Windows**
+1. Install the official python distributable https://www.python.org/downloads/windows/ 
+2. Install NGSpice, latest version: https://ngspice.sourceforge.io/download.html 
+3. Move the NGSpice folder wherever you want it, then copy the path to the folder where the .exe is stored (you can click on the windows explorer bar and ctrl+c to grab it once you've navigated to it)
+4. Add the NGSpice path to your Windows PATH environment variables:
+   1. Press windows and type "Environment variables" and go to the "edit environment variables for your account" suggestion
+   2. Click on the "Path" user variable and click the "Edit" button
+   3. Click "new" on the popup window, and paste the path that you copied to the ngspice executable earlier.  **Note: the path shouldn't include the .exe name itself!**
+   4. Hit OK to close all the windows for this stuff.
+5. 
 
 Getting started
 --------
@@ -156,10 +168,15 @@ Spicewrapper has two significant data structures that you will receive.
 This dataframe stores the results of individual NGSpice runs.  Each row represents the outcome of one run, and the columns contain all the important data.  The columns look like:
 
 [index, circ_file_orig_contents, total_energy, spice_df, param1val, param2val, param3val, etc]
+
 ``index`` is the row index of the particular result. Nothing special.
+
 ``circ_file_orig_contents`` is the raw text of the circuit file used in that run.
+
 ``total_energy`` is the net energy consumed by all the DC voltage sources over the simulation window.  This calculation might fail for various reasons, most commonly when you don't have any DC voltage sources for it to calculate from.  In the future, this may be extended to other types of sources.
+
 ``spice_df`` is a dataframe itself which contains the values of all simulation variables over time.  We'll explain this later.
+
 ``paramXval`` is the value of the associated simulation parameter for this particular combination of parameter values.  If your parameter name in the netlist .cir file is actually ``rval``, then this column would be named ``rval``.  The remaining columns to the right are similar, just for the other parameter values from the simulation.
 
 2. the spice_dataframe (spice_df)
@@ -168,6 +185,8 @@ The columns are [time, variable_name1, variable_name2, etc].  The rows are the t
 
 **Plotting and saving**
 
-From here on out, you've got your data in dataframes, and you can obviously do whatever you want with it.  But we've thrown in a few convenience functions to speed some things up for beginners.  
+From here on out, you've got your data in dataframes, and you can obviously do whatever you want with it.  But we've thrown in a few convenience functions to speed some things up for beginners.  data_processing.simple_plot() and data_processing.plot_sweep_result() are discussed in ``squid_param_sweep.py`` and other examples.  
+
+
 
 
