@@ -82,4 +82,68 @@ In this example, the parameters are specified like this:
        'cval': [5e-14, 5e-11, 8,'log'],
    }
 
-The simulation
+The simulation will iterate over all combinations of both variables, in this case, an 8x8 grid, where the values are logarithmically spaced from the minimum to the maximum value for each parameter.  The values are initially shuffled into a random order to avoid "hugging" the edge values at the beginning.
+
+**Objective Waveforms and User Functions**
+
+How does it know what a good simulation result is?  Spicewrapper lets you define a user function like so:
+
+.. code-block:: python
+
+   def user_function(df):
+    wf_result = data_processing.evaluate_objective_waveforms(waveforms, df)
+    return wf_result
+
+The ``waveforms`` passed to ``evaluate_objective_waveforms`` are specified here as:
+
+.. code-block:: python
+
+   #define the objective waveform that we want the variable to match
+   #in this case, we want to smooth out the transitions of the pulse
+   objective_waveform1 = {
+       'variable': 'v(outpos)', #the name of the output variable to match, such as a voltage at a node or current through a device
+       'time_value_pairs': 
+           [(0, 0), #time, value pairs
+            (1e-9, 0),
+            (1.3e-9, 0.2),
+            (1.5e-9, 0.8),
+            (1.8e-9, 1), 
+            (6.0e-9, 1), 
+            (6.3e-9, 0.8),
+            (6.5e-9, 0.2),
+            (6.8e-9, 0),
+            (7.8e-9, 0)],
+       'deviation_size': 0.01, #actual deviation of the variable that is allowable from its objective value
+       'interpolation_method': 'hermite', #how to interpolate between specified time value pairs
+       'power': 1 #higher values penalize deviations more heavily
+   }
+   
+   #this is the list of objective waveforms that we want to match during the optimization
+   waveforms = [objective_waveform1]
+
+In this simple example, we've written out a small set of discrete values that the variable ``v(outpos)`` (voltage at node "outpos") should closely follow over time.  We can specify other things about the penalty for deviations in the waveform as well.  You can include any number of waveforms to evaluate, or none at all.  Each time an NGSpice simulation completes, it evaluates the specified variable and compares the result to the "desired waveform" that you specified for it.  By default, Spicewrapper uses a convenient heuristic we call "deviational loss."  In short, the absolute error between the desired and actual values is taken as a fraction of a "deviation_size" and raised to a penalty power.  Note that the scale of deviation size is absolute, not fractional.  This has some advantages over a simple RMSE evaluation in that it may be less biased for functions with wide extremes in values.  Nevertheless, you may wish to use your own metric, and in that case you can define your ``user_function`` any way you want.  It just has to take in a ``spice_df`` dataframe (see formatting notes below) and return a scalar score value.
+
+**Running the sweep**
+
+Next, we call ``run_spicemanager`` to begin the optimization process.
+
+.. code-block:: python
+
+   best_result,all_results = simulation_runner.run_spicemanager(
+    cir_file_path,
+    subcircuit_path,
+    params,
+    user_function,
+    process_timeout = 60, #timeout for each individual simulation process
+    global_timeout = 150, #timeout for the entire simulation
+    interpolation_timestep = 10e-12, #timestep for interpolation of data and waveforms
+    mode = 'grid', #mode of simulation, can be 'grid' or 'basinhopping'
+    mode_args = None, #optional: arguments for the mode, such as basinhopping arguments
+    n_processes = 4, #number of processes to run in parallel
+    temp_folder = 'temp_sim_files/', #folder to store temporary files such as modified circuits and output files
+    waveforms = waveforms, #list of objective waveforms to match during the optimization
+    randomize_params = True, #randomize the order of parameter combinations to speed up the optimization process
+    ) 
+
+It will bring up a GUI displaying the ongoing progress, including the best score (lowest/best optimizer value) and the objective waveforms for that particular parameter combination.  When finished, it will return two values representing a single dataframe with the best result, and a larger dataframe where each row is a simulation result representing a different parameter combination.
+
