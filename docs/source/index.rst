@@ -30,7 +30,8 @@ Prologue: Python and NGSpice
    3. Click "new" on the popup window, and paste the path that you copied to the ngspice executable earlier.  **Note: the path shouldn't include the .exe name itself!**
    4. Hit OK to close all the windows for this stuff.
 
-5. 
+5. Open command prompt and try typing ``ngspice`` and pressing enter.
+6. If you haven't already, install a good IDE.  I recommend Cursor: https://www.cursor.com 
 
 Getting started
 --------
