@@ -27,7 +27,10 @@ This code is in a very early state and has some limitations as a result.  It's o
 
 You may get used to working purely with netlists while using this code.  A suggestion I have is to learn to use subcircuits extensively.  Most of the time, issues with SPICE netlists are due to excessively long and complicated nets for every individual simulation you want to run.  Whenever possible, you should test small, modular subcircuits and confirm that they behave correctly and have the right connectivity, then save them into a library and reuse them in more complex circuits.  Most designs, even fairly complex ones involving many components, can be reduced to just a few lines of code in your netlist by reusing these blocks appropriately.
 
-For more information, see the :doc:`installation guide <usage>`.
+Other Guides
+------------
+
+For a tutorial on using JJs in Spicewrapper/NGSpice, see :doc:`JJs in NGSpice <jjs_in_ngspice>`.
 
 Prologue: Python and NGSpice
 --------
