@@ -262,6 +262,9 @@ These are included without any guarantee of scientific accuracy, performance, or
 Some included devices: 
 
 -An SOI CMOS device, which acts like an FD-SOI transistor with a ~1V threshold voltage.  This is not particularly optimized right now.
+
 -An RCSJ Josephson Junction (JJ) model.  It uses a virtual capacitor internal to the subcircuit to model the phase difference across the junction at any time; this is a fairly standard approach for SPICE JJ modeling.  It has been tested against WRSpice results on a couple of different simulations, including those with SQUIDs, while producing very good agreement.
+
 -An SNSPD model, based on Karl Berggren's group's SNSPD SPICE model: https://github.com/qnngroup/snspd-spice.  This version has some misc tweaks to make it work better with NGSpice and devices of interest to us.
+
 -An inverter using the SOI-CMOS model to showcase nested subcircuits.
