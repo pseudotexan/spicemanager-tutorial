@@ -52,20 +52,19 @@ Prologue: Python and NGSpice
 
 5. Open command prompt (from any directory) and try typing ``ngspice`` and pressing enter.  You should see a 90's looking GUI pop up in a small window.  If you don't, something is wrong with your PATH variable for Windows.
 6. If you haven't already, install a good IDE.  I recommend Cursor: https://www.cursor.com 
-
+7. Proceed to the steps in "Getting Started", next.
 
 Getting started
 --------
 1. Clone the git repo to your computer from http://www.github.com/pseudotexan/spicewrapper
-2. Install dependencies: 
-   1. tkinter
-   2. numpy
-   3. pandas
-   4. matplotlib
-   5. scipy
-   6. pyperclip
+2. Install dependencies, if needed:
+   1. numpy
+   2. pandas
+   3. matplotlib
+   4. scipy
+   5. pyperclip
 3. In the spicewrapper folder, go to ``example_scripts/pulse_filter_grid_optimization_script.py``
-4. Near the top, modify the ``path_to_spicewrapper`` path to reflect the actual git directory on your computer.  Note that it will have a different structure depending on the OS you're using. This change will make it easier to copy this example file and use it in other project directories unrelated to spicewrapper.
+4. Near the top, modify the ``path_to_spicewrapper`` path to reflect the **actual git directory** on your computer.  Note that it will have a different structure depending on the OS you're using. This change will make it easier to copy this example file and use it in other project directories unrelated to spicewrapper.
 
 Running a simple example
 --------
@@ -90,7 +89,8 @@ The goal of this script is to optimize the L and C values to smooth out a sharp 
    
    #define the subcircuit path - this is where all subcircuits are stored
    subcircuit_path = os.path.join(script_dir, '..', 'included_subcircuits')
-These lines tell Spicewrapper where to find the various files that are needed to run the simulation: the main netlist file (circuit file or .cir), and the subcircuits directory, where .sub files will be referenced from.  Spicewrapper will modify the netlist so that any subcircuit includes will reference the actual directory.  
+
+These lines tell Spicewrapper where to find the various files that are needed to run the simulation: the main netlist file (circuit file or .cir), and the subcircuits directory, where .sub files will be referenced from.  Spicewrapper will modify the netlist so that any subcircuit includes will reference the actual directory.  The default settings work for the examples, but you should modify them when you decide on a more permanent working directory for a given project.  Thankfully, you can run these scripts from anywhere, and with the right directory settings on the script, they will still correctly import and use the spicewrapper modules on your system.
 
 **Optional: Parameter Name Extraction**
 
@@ -106,6 +106,8 @@ This comes in handy for specifying a parameter sweep and saves you the time of m
         'lval': [1e-07, 1e-06, 8, 'log'],
         'cval': [1e-10, 1e-09, 8, 'log']
     }
+
+You can then trim uninteresting parameters, and modify the ranges to a sensible/meaningful value (they default to a range roughly located around the default value from the netlist).  Note that depending on the type of run (grid or basinhopping optimization), there is an optional argument that affects the formatting of the output.
 
 **Parameters**
 
