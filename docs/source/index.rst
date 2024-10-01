@@ -74,6 +74,8 @@ This example uses a netlist file, ``example_circuits/pulse_filter.cir``, which i
 
 The goal of this script is to optimize the L and C values to smooth out a sharp input voltage pulse.  It will search a log-spaced grid of parameter value combinations and find the set of values with the most nearly ideal result.  We'll break down the script and explain how this happens.
 
+Before proceeding with this example, note that you can also find a stripped-down, single-simulation example in ``example_scripts/squid_single_simulation.py`` that shows you how to "just run NGSpice on a circuit" without extra stuff.
+
 **Paths and files**
 
 .. code-block:: python
@@ -243,4 +245,23 @@ From here on out, you've got your data in dataframes, and you can obviously do w
    :align: center
    :width: 50%
 
+**Other Examples**
 
+You can find more examples of interest in ``example_scripts/``. Each one is heavily documented in the ``.cir`` and ``.py`` script files. Here are some details to show you what's available first:
+
+``pulse_filter_basinhopping_optimization_script``: This is similar to the example above, but instead of a brute-force grid parameter search, it uses a basinhopping optimization strategy.  This allows it to perform local gradient searches while still retaining the ability to escape from local minima when it has "stalled out." The example shows some differences in parameter specifications and various configuration settings that are necessary when operating in this mode.  It's worth noting that the basinhopping mode requires a great deal of fine-tuning of its parameters to work effectively, and for this reason, I don't recommend starting on it right away.  The grid strategy, with shuffled parameters, and carefully chosen parameter ranges and spacings, tends to produce good results with a fairly predictable runtime, and requires very little fine-tuning in comparison.
+
+``squid_param_sweep.py``: The purpose of the example is mostly to show you how to use Spicewrapper for conventional parameter sweeps - like understanding the values of variables over time, as a function of different parameter settings in combinations. The resulting script requires fewer configuration settings.  It also shows you how to conveniently plot the results of these sweeps.
+
+``squid_single_simulation.py``: This example uses a different circuit file, which represents a SQUID pulse readout from an SNSPD inductively coupled to it. The point of this script is to show you how to "just run a simple analysis" with no sweeps, bells, whistles, or kitchen sinks.
+
+**Included Subcircuits**
+
+These are included without any guarantee of scientific accuracy, performance, or reliability.  That said, they work reasonably well for a variety of obscure projects that we happen to be interested in.  You shouldn't use them for published data without rigorously verifying their correct behavior first.  They may also have parameters that only work sensibly within narrow ranges or use-cases, like the SOI-CMOS transistor model in the corresponding subcircuit file. Think of these as a way to hit the ground running, since they will allow you to model the behavior of relatively complex devices with reasonable accuracy.
+
+Some included devices: 
+
+-An SOI CMOS device, which acts like an FD-SOI transistor with a ~1V threshold voltage.  This is not particularly optimized right now.
+-An RCSJ Josephson Junction (JJ) model.  It uses a virtual capacitor internal to the subcircuit to model the phase difference across the junction at any time; this is a fairly standard approach for SPICE JJ modeling.  It has been tested against WRSpice results on a couple of different simulations, including those with SQUIDs, while producing very good agreement.
+-An SNSPD model, based on Karl Berggren's group's SNSPD SPICE model: https://github.com/qnngroup/snspd-spice.  This version has some misc tweaks to make it work better with NGSpice and devices of interest to us.
+-An inverter using the SOI-CMOS model to showcase nested subcircuits.
