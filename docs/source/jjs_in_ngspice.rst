@@ -32,6 +32,8 @@ The JJ only needs 4 parameters in this subcircuit definition, and none of them i
 
 A little note about the syntax: the prefix letter 'x' in SPICE means this is a reference to a subcircuit.  The next few arguments are the nodes to connect your subcircuit to.  Finally, the name of the subcircuit that will be referenced, in this case jj_rcsj.  I would advise organizing input parameters like I have done in this example, where each variable argument is included on a separate line, with a '+' preceding it to indicate the continuation of the previous line.  This effectively constructs a normal call to the subcircuit that looks neater than a fully in-line call.
 
+Before proceeding, open up ``example_circuits/squid_test.cir`` to see an example circuit using JJs.
+
 2. Using Initial Conditions (IC)
 
 In WRSpice, the typical approach to control initial conditions is to specify a number of voltage-controlled resistors (driven by transient sources) that either block or short-circuit current in different paths at the beginning of the simulation. This is bad for several reasons. It's more computationally intensive, since the value of the resistor is changing over many orders of magnitude over a typically short time.  It also adds unnecessary complexity to both the circuit diagram and the netlist, making it harder to interpret.
@@ -68,3 +70,5 @@ JJs operate in a regime different from most conventional components, with extrem
  .option vntol=1e-8
 
 This is likely not optimal for performance, so I encourage you to do some convergence settings with these and other options (which you can learn about from the NGSpice manual in more detail).  
+
+4. Further examples
