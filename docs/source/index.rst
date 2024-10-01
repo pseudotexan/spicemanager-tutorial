@@ -57,18 +57,28 @@ Prologue: Python and NGSpice
 Getting started
 --------
 1. Clone the git repo to your computer from http://www.github.com/pseudotexan/spicewrapper
+
 2. Install dependencies, if needed:
+
    1. numpy
+
    2. pandas
+
    3. matplotlib
+
    4. scipy
+
    5. pyperclip
+
 3. In the spicewrapper folder, go to ``example_scripts/pulse_filter_grid_optimization_script.py``
+
 4. Near the top, modify the ``path_to_spicewrapper`` path to reflect the **actual git directory** on your computer.  Note that it will have a different structure depending on the OS you're using. This change will make it easier to copy this example file and use it in other project directories unrelated to spicewrapper.
+
+5. Open your IDE with Administrator mode to give it the appropriate privileges.  These are used for creating temporary symbolic links that connect the circuit file to a subcircuit folder in any directory.  I'm working on a better solution than this, but this approach works on Windows for now (on Mac, it is not needed).
 
 Running a simple example
 --------
-In this example, we'll run one of the included scripts, ``example_scripts/pulse_filter_grid_optimization_script.py``, to showcase some of the useful features of Spicewrapper.  
+In this example, we'll run one of the included scripts, ``example_scripts/pulse_filter_grid_optimization_script.py``, to showcase some of the useful features of Spicewrapper.  Before proceeding, make sure that you modified the path to the Spicewrapper directory as instructed in step (4) of the previous section. You need to do this for each different script that you run, but you can copy and paste it.
 
 This example uses a netlist file, ``example_circuits/pulse_filter.cir``, which implements a simple RLC lowpass filter.  The values of each element are parameterized in the netlist, i.e. ``.param rval = 50``.  Spicewrapper looks for parameter values in the ``.cir`` file (note: it does not look in subcircuits for parameters) and updates their values as needed for sweeps or optimization runs.  Note that it never directly modifies your circuit file; changes are always made to a temporary copy created in the temporary folder of the spicewrapper directory.
 
