@@ -2,8 +2,8 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
+project = 'Spicewrapper'
+copyright = '2024, Chiles'
 author = 'Graziella'
 
 release = '0.1'
