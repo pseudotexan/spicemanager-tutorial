@@ -74,7 +74,7 @@ Getting started
 
    7. pyqt
 
-3. Set up a PYTHONPATH user variable as follows:
+3. Set up a PYTHONPATH user variable as follows for the Spicewrapper directory:
 
    1. Go to Settings in Windows
 
@@ -84,13 +84,14 @@ Getting started
 
    4. Name it “PYTHONPATH” without quotes
 
-   5. Paste in the path to whatever folder you want to import python scripts/modules from. 
+   5. Open windows explorer and navigate to the spicewrapper directory, which might look like: C:\Users\pseud\Documents\GitHub\spicewrapper
+      1. Note that you should *NOT* use the nested spicewrapper path like this: C:\Users\pseud\Documents\GitHub\spicewrapper\spicewrapper
 
-   6. Click OK for all open dialogue boxes.
+   6. Paste in the path to whatever folder you want to import python scripts/modules from. 
 
-   7. Restart your IDE to check whether it worked.     
+   7. Click OK for all open dialogue boxes.
 
-   8. Ensure your IDE is using the correct Python interpreter.
+   8. Restart your IDE if you had it open already.  Ensure that it's using the correct Python interpreter. Again, I recommend the vanilla Python distribution from python.org.
 
 
 Running a simple example
