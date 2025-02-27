@@ -72,7 +72,9 @@ Getting started
 
    6. bokeh
 
-   7. pyqt
+   7. pyqt5
+
+   8. pyqtgraph
 
 3. Set up a PYTHONPATH user variable as follows for the Spicewrapper directory:
 
