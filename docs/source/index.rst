@@ -75,15 +75,22 @@ Getting started
    7. pyqt
 
 3. Set up a PYTHONPATH user variable as follows:
-   - Go to Settings in Windows
-   - In the search bar, type “edit environment variables” and click the “Edit Environment Variables For Your Account” that pops up
-   - In the top table titled “User variables for [your name]”, click the button below that says “New”
-   - Name it “PYTHONPATH” without quotes
-   - Paste in the path to whatever folder you want to import python scripts/modules from. 
-   - Click OK for all open dialogue boxes.
-   - Restart your IDE to check whether it worked.     
-   - Ensure your IDE is using the correct Python interpreter.
 
+   1. Go to Settings in Windows
+
+   2. In the search bar, type “edit environment variables” and click the “Edit Environment Variables For Your Account” that pops up
+
+   3. In the top table titled “User variables for [your name]”, click the button below that says “New”
+
+   4. Name it “PYTHONPATH” without quotes
+
+   5. Paste in the path to whatever folder you want to import python scripts/modules from. 
+
+   6. Click OK for all open dialogue boxes.
+
+   7. Restart your IDE to check whether it worked.     
+
+   8. Ensure your IDE is using the correct Python interpreter.
 
 
 Running a simple example
