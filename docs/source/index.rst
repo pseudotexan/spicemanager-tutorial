@@ -58,7 +58,7 @@ Getting started
 --------
 1. Clone the git repo to your computer from http://www.github.com/pseudotexan/spicewrapper
 
-2. Install dependencies, if needed:
+2. Install dependencies, if needed, preferably using pip:
 
    1. numpy
 
@@ -70,11 +70,20 @@ Getting started
 
    5. pyperclip
 
-3. Open your IDE with Administrator mode to give it the appropriate privileges.  These are used for creating temporary symbolic links that connect the circuit file to a subcircuit folder in any directory.  I'm working on a better solution than this, but this approach works on Windows for now (on Mac, it is not needed).
+   6. bokeh
 
-4. In the spicewrapper folder, go to ``example_scripts/pulse_filter_grid_optimization_script.py``
+   7. pyqt
 
-5. Near the top, modify the ``path_to_spicewrapper`` path to reflect the **actual git directory** on your computer.  Note that it will have a different structure depending on the OS you're using. This change will make it easier to copy this example file and use it in other project directories unrelated to spicewrapper.
+3. Set up a PYTHONPATH user variable as follows:
+   - Go to Settings in Windows
+   - In the search bar, type “edit environment variables” and click the “Edit Environment Variables For Your Account” that pops up
+   - In the top table titled “User variables for [your name]”, click the button below that says “New”
+   - Name it “PYTHONPATH” without quotes
+   - Paste in the path to whatever folder you want to import python scripts/modules from. 
+   - Click OK for all open dialogue boxes.
+   - Restart your IDE to check whether it worked.     
+   - Ensure your IDE is using the correct Python interpreter.
+
 
 
 Running a simple example
