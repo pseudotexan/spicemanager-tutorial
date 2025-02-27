@@ -85,6 +85,7 @@ Getting started
    4. Name it “PYTHONPATH” without quotes
 
    5. Open windows explorer and navigate to the spicewrapper directory, which might look like: C:/Users/pseud/Documents/GitHub/spicewrapper
+   
       1. Note that you should *NOT* use the nested spicewrapper path like this: C:/Users/pseud/Documents/GitHub/spicewrapper/spicewrapper
 
    6. Paste in the path to whatever folder you want to import python scripts/modules from. 
